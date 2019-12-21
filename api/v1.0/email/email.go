@@ -6,8 +6,9 @@ import "github.com/gin-gonic/gin"
 func ApplyRoutes(r *gin.RouterGroup) {
 	emails := r.Group("/")
 	{
-		emails.GET("/all", getAll)         //* Get all scammers emails in databse
-		emails.POST("/newscam", resgister) //* Posts new scammer email
-		emails.POST("/scan", scan)         //* Scans an email in the database
+		emails.GET("/all", getAll)        //* Get all scammers emails in databse
+		emails.POST("/newscam", register) //* Posts new scammer email
+		emails.POST("/scan", scan)        //* Scans an email in the database
+		emails.PATCH("/:id", update)
 	}
 }

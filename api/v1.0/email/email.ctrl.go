@@ -25,7 +25,7 @@ func getAll(c *gin.Context) {
 
 	var emails []Email
 	if cursor == "" {
-		if err := db.Find(&emails).Limit(100).Error; err != nil {
+		if err := db.Find(&emails).Limit(100).Order("no_of_occurrences").Error; err != nil {
 			c.AbortWithStatus(500)
 			return
 		}
@@ -67,7 +67,7 @@ func scan(c *gin.Context) {
 * @func
 *		Route for posting new email in database
  */
-func resgister(c *gin.Context) {
+func register(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	type RequestBody struct {
 		Email       string `json:"email" binding:"required"`
@@ -85,5 +85,31 @@ func resgister(c *gin.Context) {
 	}
 	db.NewRecord(email)
 	db.Create(&email)
+	c.JSON(200, email.Serialize())
+}
+
+func update(c *gin.Context) {
+	db := c.MustGet("db").(*gorm.DB)
+	id := c.Param("id")
+
+	type RequestBody struct {
+		vote string `json:"vote" binding:"required"`
+	}
+
+	var requestBody RequestBody
+
+	if err := c.BindJSON(&requestBody); err != nil {
+		c.AbortWithStatus(400)
+		return
+	}
+
+	var email Email
+	if err := db.Set("gorm:auto_preload", true).Where("id = ?", id).First(&email).Error; err != nil {
+		c.AbortWithStatus(404)
+		return
+	}
+
+	email.NumberOfOccurrences = email.NumberOfOccurrences + 1
+	db.Save(&email)
 	c.JSON(200, email.Serialize())
 }
