@@ -8,9 +8,9 @@ import (
 	"os"
 )
 
-// Initilize the database and make a connection
+// Bootstrap initilize the database and make a connection
 func Bootstrap() (*gorm.DB, error) {
-	dbConfig := os.Getenv("DB_CONFIG")
+	dbConfig := os.Getenv("DATABASE_URL")
 	db, err := gorm.Open("postgres", dbConfig)
 	db.LogMode(true) //* Logs SQL
 	if err != nil {
