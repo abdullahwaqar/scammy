@@ -4,12 +4,10 @@ import "github.com/gin-gonic/gin"
 
 // ApplyRoutes applies router to the gin Engine
 func ApplyRoutes(r *gin.RouterGroup) {
-	posts := r.Group("/posts")
+	emails := r.Group("/")
 	{
-		posts.POST("/", resgister)
-		// posts.GET("/", list)
-		// posts.GET("/:id", read)
-		// posts.DELETE("/:id", middlewares.Authorized, remove)
-		// posts.PATCH("/:id", middlewares.Authorized, update)
+		emails.GET("/all", getAll)         //* Get all scammers emails in databse
+		emails.POST("/newscam", resgister) //* Posts new scammer email
+		emails.POST("/scan", scan)         //* Scans an email in the database
 	}
 }
