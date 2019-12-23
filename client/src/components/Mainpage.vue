@@ -1,7 +1,7 @@
 <template>
 <section>
 
-    <section class="hero is-dark is-fullheight">
+    <section class="hero is-light is-fullheight">
     <!-- Hero head: will stick at the top -->
     <div class="hero-head">
         <header class="navbar">
@@ -41,7 +41,7 @@
         </h1>
         <hr>
         <h2 class="subtitle">
-            Have i gotten a suspicious email? Can it be a scammer?
+            Received a fishy email? Can it be a scammer? Check if the same email was sent to others or report the email.
         </h2>
         <search-bar></search-bar>
         </div>
