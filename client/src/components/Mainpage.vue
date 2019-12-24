@@ -41,15 +41,12 @@
         </h1>
         <hr>
         <h2 class="subtitle">
-            Received a fishy email? Can it be a scammer? Check if the same email was sent to others or report the email.
+            Received a fishy email? Can it be a scammer? Check if the same email was sent to others or <u><a href="/report">report</a></u> the email.
         </h2>
         <search-bar></search-bar>
         </div>
     </div>
     </section>
-    <hr>
-    <!-- <levelitem></levelitem> -->
-    <!-- <hr> -->
 </section>
 </template>
 
