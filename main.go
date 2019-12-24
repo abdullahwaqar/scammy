@@ -3,10 +3,10 @@ package main
 import (
 	"api/api"
 	"api/database"
-	"os"
-
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"os"
 )
 
 func main() {
@@ -21,6 +21,7 @@ func main() {
 	port := os.Getenv("PORT")
 	app := gin.Default() // create gin app
 	app.Use(database.Inject(db))
-	api.ApplyRoutes(app) // apply api router
-	app.Run(":" + port)  // listen to given port
+	app.Use(cors.Default()) // allows all origins
+	api.ApplyRoutes(app)    // apply api router
+	app.Run(":" + port)     // listen to given port
 }
