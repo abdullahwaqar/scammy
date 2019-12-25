@@ -41,6 +41,10 @@ export default new Vuex.Store({
             commit('setEmail', response);
             router.push('/scan');
             console.log(response)
+        },
+        async incrementReportCount({ commit }) {
+            const response = await Network.incrementEmailReport(this.state.email.id);
+            commit('setEmail', response);
         }
     }
 })

@@ -37,7 +37,7 @@ import CardScan from '@/components/Card.Scan.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {
-    name: 'Scan',
+    name: 'Report',
     components: {
         'navbar': Navbar,
         'card': CardScan,

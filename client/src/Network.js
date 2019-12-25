@@ -18,7 +18,17 @@ async function getEmailDEtails(email) {
 }
 
 
+async function incrementEmailReport(id) {
+    try {
+        const response = await axios.patch(`${BASE_URL}/${id}`, { vote: 1 });
+        return response.data;
+    } catch (error) {
+        return { error: error };
+    }
+}
+
 export default {
     ping,
-    getEmailDEtails
+    getEmailDEtails,
+    incrementEmailReport
 }
