@@ -4,17 +4,18 @@
         <div class="column is-half is-offset-one-quarter">
             <div class="card">
             <header class="card-header">
-                <p class="card-header-title">Report</p>
-                <span class="icon">
+                <p class="card-header-title">Report for {{ email.email }}</p>
+                <!-- <span class="icon">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
+                </span> -->
             </header>
             <div class="card-content">
                 <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+                    Email <strong><u>{{ email.email }}</u></strong> has been reported <strong>{{ email.no_of_occurrences }}</strong> times for sending fraudulent emails.
                 <br>
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                First reported at <strong><time>{{ email.date_created }}</time></strong>
+                <br>
+                Last reported at <strong><time>{{ email.updated_at }}</time></strong>
                 </div>
             </div>
             <footer class="card-footer">
@@ -27,7 +28,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-    name: 'CardScan'
+    name: 'CardScan',
+    computed: {
+        ...mapGetters({ email: 'getEmail'})
+    }
 }
 </script>

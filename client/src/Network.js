@@ -8,7 +8,17 @@ async function ping() {
     return await axios.get(`${BASE_URL}/ping`);
 }
 
+async function getEmailDEtails(email) {
+    try {
+        const response = await axios.post(`${BASE_URL}/scan`, { email: email});
+        return response.data;
+    } catch (error) {
+        return { error: error };
+    }
+}
+
 
 export default {
-    ping
+    ping,
+    getEmailDEtails
 }
