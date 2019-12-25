@@ -20,6 +20,8 @@ func (e *Email) Serialize() common.JSON {
 		"email":             e.Email,
 		"email_header":      e.EmailHeader,
 		"no_of_occurrences": e.NumberOfOccurrences,
+		"date_created":      e.CreatedAt,
+		"updated_at":        e.UpdatedAt,
 	}
 }
 

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import Network from '../Network';
+import router from '../router';
 
 Vue.use(Vuex);
 
@@ -12,6 +13,9 @@ export default new Vuex.Store({
     getters: {
         getStatus(state) {
             return state.status;
+        },
+        getEmail(state) {
+            return state.email;
         }
     },
     mutations: {
@@ -28,6 +32,15 @@ export default new Vuex.Store({
             if (status === 200) {
                 commit('setStatus');
             }
+        },
+        async getEmailDetails({ commit }, email) {
+            const response = await Network.getEmailDEtails(email);
+            if (response.error) {
+                return;
+            }
+            commit('setEmail', response);
+            router.push('/scan');
+            console.log(response)
         }
     }
 })
