@@ -3,18 +3,18 @@ package main
 import (
 	"api/api"
 	"api/database"
+	"os"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
-	"os"
 )
 
 func main() {
 	// load .env environment variables
-	err := godotenv.Load()
-	if err != nil {
-		panic(err)
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	// initializes database
 	db, _ := database.Bootstrap()
