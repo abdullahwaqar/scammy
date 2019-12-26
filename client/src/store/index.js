@@ -40,7 +40,22 @@ export default new Vuex.Store({
             }
             commit('setEmail', response);
             router.push('/scan');
-            console.log(response)
+        },
+        async incrementReportCount({ commit }) {
+            const response = await Network.incrementEmailReport(this.state.email.id);
+            commit('setEmail', response);
+        },
+        async reportNewScam({ commit, dispatch }, email, emailHeader) {
+            //* Check is the email already exists
+            const emailCheck = await Network.getEmailDEtails(email);
+            if (!emailCheck.error) {
+                //* Email already exists, just increment it
+                const response = await Network.incrementEmailReport(emailCheck.id);
+                commit('setEmail', response);
+            } else {
+                const response = await Network.postNewScamEmail(email, emailHeader);
+                commit('setEmail', response);
+            }
         }
     }
 })

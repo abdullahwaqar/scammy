@@ -71,7 +71,7 @@ func register(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	type RequestBody struct {
 		Email       string `json:"email" binding:"required"`
-		EmailHeader string `json:"email_header" binding:"required"`
+		EmailHeader string `json:"email_header"`
 	}
 	var requestBody RequestBody
 	if err := c.BindJSON(&requestBody); err != nil {
