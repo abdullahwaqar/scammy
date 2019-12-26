@@ -42,7 +42,10 @@
                 </div>
             </div>
             <footer class="card-footer">
-                <a @click="increment" class="card-footer-item">+1 Report</a>
+                <a v-if="flag" @click="increment" class="card-footer-item">+1 Report</a>
+                <!-- <div v-else class="container">
+                    <i class="fas fa-check-double"></i>
+                </div> -->
             </footer>
         </div>
         </div>
@@ -57,7 +60,8 @@ export default {
     name: 'CardScan',
     data: function() {
         return {
-            tab: 'report'
+            tab: 'report',
+            flag: true
         }
     },
     computed: {
@@ -67,6 +71,7 @@ export default {
         ...mapActions({ incrementEmail: 'incrementReportCount' }),
         increment() {
             this.incrementEmail();
+            this.flag = false;
         }
     }
 }

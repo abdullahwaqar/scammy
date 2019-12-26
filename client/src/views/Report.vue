@@ -10,10 +10,15 @@
                 <div class="column is-half is-offset-one-quarter">
                 <article class="message is-dark">
                 <div class="message-body">
-                    If you have recieved an email from this address we suggest you to not engage with it. Please consider hitting <strong><u>+1 Report</u></strong> to help others.
+                    If you have recieved an email from a scammer please contribute by submiting the email of the sender.
                     <br>
                     <br>
-                    If this email is not in our database and you think this email is used to scam people then please report it <strong><a href="/report">here</a></strong>.
+                    Or check an email if it is marked as scam in our database <strong><a href="/">here</a></strong>.
+                    <br>
+                    <br>
+                    <u><a href="https://www.purpledogdesign.com/clients/knowledgebase/117/How-to-Copy-Email-Headers-for-troubleshooting.html">
+                    What are Email headers? And where to find them.
+                    </a></u>
                     <br>
                     <br>
                     <strong>Tips:</strong>
@@ -33,14 +38,14 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
-import CardScan from '@/components/Card.Scan.vue';
+import ReportCard from '@/components/Report.Card.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {
     name: 'Report',
     components: {
         'navbar': Navbar,
-        'card': CardScan,
+        'card': ReportCard,
         'cs-footer': Footer
     }
 }
