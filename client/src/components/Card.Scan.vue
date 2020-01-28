@@ -13,9 +13,6 @@
             <div v-else class="card">
             <header class="card-header">
                 <p class="card-header-title">Report for {{ email.email }}</p>
-                <!-- <span class="icon">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span> -->
             </header>
             <div class="card-content">
                 <div class="tabs">
@@ -37,7 +34,7 @@
                 <!-- Header Tab -->
                 <div v-if="tab === 'header'">
                     <div class="control">
-                    <textarea v-model="email.email_header" class="textarea has-fixed-size" placeholder="Fixed size textarea" readonly></textarea>
+                    <textarea v-model="emailHeader" class="textarea has-fixed-size" placeholder="Fixed size textarea" readonly></textarea>
                     </div>
                 </div>
             </div>
@@ -62,7 +59,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters({ email: 'getEmail' })
+        ...mapGetters({ email: 'getEmail', emailHeader: 'getEmailHeader' })
     },
     methods: {
         ...mapActions({ incrementEmail: 'incrementReportCount' }),

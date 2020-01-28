@@ -15,8 +15,10 @@ export default new Vuex.Store({
             return state.status;
         },
         getEmail(state) {
-            state.email.email_header = state.email.email_header.split(',').join('\n');
             return state.email;
+        },
+        getEmailHeader(state) {
+            return state.email.email_header.split(',').join('\n');
         }
     },
     mutations: {

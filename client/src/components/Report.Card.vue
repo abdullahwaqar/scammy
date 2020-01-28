@@ -56,7 +56,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters({ emailRet: 'getEmail'})
+        ...mapGetters({ emailRet: 'getEmail' })
     },
     methods: {
         ...mapActions({ report: 'reportNewScam' }),
