@@ -78,6 +78,7 @@ func register(c *gin.Context) {
 		c.AbortWithStatus(400)
 		return
 	}
+	println(requestBody.EmailHeader)
 	email := Email{
 		Email:               requestBody.Email,
 		EmailHeader:         requestBody.EmailHeader,

@@ -15,6 +15,7 @@ export default new Vuex.Store({
             return state.status;
         },
         getEmail(state) {
+            state.email.email_header = state.email.email_header.split(',').join('\n');
             return state.email;
         }
     },
@@ -45,7 +46,7 @@ export default new Vuex.Store({
             const response = await Network.incrementEmailReport(this.state.email.id);
             commit('setEmail', response);
         },
-        async reportNewScam({ commit, dispatch }, email, emailHeader) {
+        async reportNewScam({ commit, dispatch }, { email, emailHeader }) {
             //* Check is the email already exists
             const emailCheck = await Network.getEmailDEtails(email);
             if (!emailCheck.error) {

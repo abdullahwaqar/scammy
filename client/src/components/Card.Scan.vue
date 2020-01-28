@@ -43,9 +43,6 @@
             </div>
             <footer class="card-footer">
                 <a v-if="flag" @click="increment" class="card-footer-item">+1 Report</a>
-                <!-- <div v-else class="container">
-                    <i class="fas fa-check-double"></i>
-                </div> -->
             </footer>
         </div>
         </div>
@@ -65,7 +62,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters({ email: 'getEmail'})
+        ...mapGetters({ email: 'getEmail' })
     },
     methods: {
         ...mapActions({ incrementEmail: 'incrementReportCount' }),

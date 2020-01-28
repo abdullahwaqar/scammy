@@ -69,7 +69,11 @@ export default {
                 this.valid = false;
                 return;
             }
-            this.report(this.email, this.emailHeader);
+            const emailHeader = this.emailHeader.split('\n');
+            this.report({
+                email: this.email,
+                emailHeader: emailHeader.filter(String).join()
+            });
         }
     },
     watch: {
